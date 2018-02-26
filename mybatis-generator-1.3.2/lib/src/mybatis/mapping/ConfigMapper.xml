@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.dao.ConfigMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.pojo.Config" >
+    <result column="uri" property="uri" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="DECIMAL" />
+    <result column="redirect" property="redirect" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="cthaccount" property="cthaccount" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="mybatis.pojo.Config" >
+    insert into tb_config (uri, id, redirect, 
+      status, cthaccount)
+    values (#{uri,jdbcType=VARCHAR}, #{id,jdbcType=DECIMAL}, #{redirect,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{cthaccount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.pojo.Config" >
+    insert into tb_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uri != null" >
+        uri,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="redirect != null" >
+        redirect,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="cthaccount != null" >
+        cthaccount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uri != null" >
+        #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="redirect != null" >
+        #{redirect,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="cthaccount != null" >
+        #{cthaccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
